@@ -6,13 +6,13 @@
 //Додати перевірку, що функція отримує числа
 
 function min(a, b) {
-  if ((typeof a) != 'number' || (typeof b) != 'number') {
+  if ((typeof a) !== 'number' || (typeof b) !== 'number') {
     return `${a} або ${b} не є числами`;
       } else {
     return Math.min(a, b);
 }
 }
-console.log(min(5, 5.47));
+console.log(min(5, "w"));
 
 // 2. Написати ф-цію, яка прибиратиме з масиву всі 
 // значення, які перетворюються на false
@@ -36,17 +36,20 @@ const array = [
 ];
 
 function checkOnFalse(arr) {
-  // console.log(arr.length);
+  let arrNotFalse = [];
   for (let i = 0; i < arr.length; i++) {
+    if (arr[i]) {
+      arrNotFalse.push(arr[i]);
+    }
     // console.log(`${i} this is ${arr[i]}`);
-    if (arr[i] === 0 || arr[i] === "" ||
-      String(arr[i]) === "NaN" || arr[i] === null ||
-      arr[i] === undefined || arr[i] === false) {
-      arr.splice(i, 1);
-      i--;
-    }  
+    // if (arr[i] === 0 || arr[i] === "" ||
+    //   String(arr[i]) === "NaN" || arr[i] === null ||
+    //   arr[i] === undefined || arr[i] === false) {
+    //   arr.splice(i, 1);
+    //   i--;
+    // }  
   }
-  return arr;
+  return arrNotFalse;
 }
 
 console.log(checkOnFalse(array));
@@ -122,14 +125,19 @@ const salaries = {
   Ajax: 1470,
 };
 
-const keysSalaries = Object.keys(salaries);
+// const keysSalaries = Object.keys(salaries);
+const valuesSalaries = Object.values(salaries);
 let sum = 0;
-if (keysSalaries.length === 0) {
-  console.log("Працівників немає, немає кому платити ЗП");  
-  } else {
-  for (const key of keysSalaries) {
-    sum += salaries[key];
-  }
-  console.log(sum);
+for (const value of valuesSalaries) {
+    sum += value;
 }
+console.log(sum);
+// if (keysSalaries.length === 0) {
+//   console.log("Працівників немає, немає кому платити ЗП");  
+//   } else {
+//   for (const key of keysSalaries) {
+//     sum += salaries[key];
+//   }
+//   console.log(sum);
+// }
 
